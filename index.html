@@ -3,134 +3,493 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="HTX 品牌视觉 Skill，用于生成符合品牌规范的长图、海报和运营视觉物料。">
-  <title>HTX Brand Skill</title>
+  <meta name="description" content="HTX 创意工具聚合页：火宝视觉 Skill、HTX 品牌视觉 Skill、竞品视觉调研 Agent 与运营视觉工作台。">
+  <meta name="theme-color" content="#0066ff">
+  <title>HTX 创意工具中心</title>
   <style>
+    @font-face {
+      font-family: "HTX HarmonyOS Sans SC";
+      src: url("./assets/HarmonyOS-Sans-SC-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "HTX HarmonyOS Sans SC";
+      src: url("./assets/HarmonyOS-Sans-SC-Medium.ttf") format("truetype");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "HTX HarmonyOS Sans SC";
+      src: url("./assets/HarmonyOS-Sans-SC-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    /*
+      已读取规范。
+      响应式网页以 1440px 桌面视口为字号基准：Hero 标题 80px；
+      移动端通过 clamp 缩放，正文不低于 16px。
+    */
     :root {
-      --blue:#0066ff;
-      --blue-light:#2692ff;
-      --ink:#111827;
-      --muted:#667085;
-      --line:#e7ebf2;
-      --soft:#f5f8ff;
-      --white:#fff;
+      --blue: #0066ff;
+      --blue-light: #2692ff;
+      --blue-dark: #0054d6;
+      --ink: #101114;
+      --muted: #626a78;
+      --line: #e8e8e8;
+      --soft: #f5f8ff;
+      --white: #ffffff;
+      --orange: #ff7a00;
     }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      margin:0;
-      color:var(--ink);
-      background:var(--white);
-      font-family:"HarmonyOS Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
-      -webkit-font-smoothing:antialiased;
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: "HTX HarmonyOS Sans SC", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
-    a { color:inherit; }
+    a, button { font: inherit; }
+    a { color: inherit; }
+    button { border: 0; }
+    .wrap { width: min(1200px, calc(100% - 48px)); margin: 0 auto; }
+
     .hero {
-      min-height:64vh;
-      display:flex;
-      align-items:center;
-      color:var(--white);
-      background:linear-gradient(180deg,var(--blue) 0%,var(--blue-light) 100%);
+      color: var(--white);
+      background: linear-gradient(180deg, #0066ff 0%, #2692ff 100%);
     }
-    .wrap { width:min(1080px,calc(100% - 40px)); margin:0 auto; }
-    .nav { position:absolute; inset:0 0 auto; padding:28px 0; }
-    .brand { font-size:24px; font-weight:700; letter-spacing:-.02em; }
-    .hero-content { max-width:800px; padding:110px 0 92px; }
-    h1 { margin:0; font-size:clamp(52px,8vw,88px); line-height:1.04; letter-spacing:-.045em; }
-    .hero p { max-width:720px; margin:30px 0 0; font-size:clamp(20px,2.6vw,28px); line-height:1.65; opacity:.92; }
-    .actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:40px; }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 116px;
+      border-bottom: 1px solid rgba(255,255,255,.34);
+    }
+    .wordmark {
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+    .brandmark { width: 64px; height: 64px; object-fit: contain; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(360px, .85fr);
+      gap: 72px;
+      align-items: center;
+      min-height: 650px;
+      padding: 88px 0 104px;
+    }
+    .hero-copy { max-width: 780px; }
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(54px, 6vw, 82px);
+      line-height: 1.04;
+      letter-spacing: -.045em;
+      font-weight: 700;
+    }
+    .hero-lead {
+      max-width: 690px;
+      margin: 30px 0 0;
+      font-size: clamp(20px, 2vw, 28px);
+      line-height: 1.55;
+      font-weight: 400;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 40px;
+    }
     .button {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:54px;
-      padding:0 26px;
-      border:1px solid rgba(255,255,255,.55);
-      border-radius:10px;
-      color:var(--white);
-      text-decoration:none;
-      font-size:17px;
-      font-weight:700;
-      transition:transform .18s ease,background .18s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 52px;
+      padding: 0 22px;
+      border: 1px solid currentColor;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
     }
-    .button.primary { color:var(--blue); background:var(--white); border-color:var(--white); }
-    .button:hover { transform:translateY(-2px); background:rgba(255,255,255,.12); }
-    .button.primary:hover { background:#f5f8ff; }
-    main { padding:86px 0 100px; }
-    h2 { margin:0; font-size:clamp(34px,5vw,48px); line-height:1.2; letter-spacing:-.03em; }
-    .intro { max-width:820px; margin-top:22px; color:var(--muted); font-size:19px; line-height:1.75; }
-    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:48px; }
-    .feature { padding:30px; border:1px solid var(--line); border-radius:14px; background:var(--white); }
-    .feature strong { display:block; margin-bottom:12px; font-size:21px; }
-    .feature p { margin:0; color:var(--muted); font-size:16px; line-height:1.7; }
-    .download {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:32px;
-      margin-top:72px;
-      padding:38px 42px;
-      border-radius:16px;
-      background:var(--soft);
+    .button:hover { transform: translateY(-2px); }
+    .button:focus-visible { outline: 3px solid rgba(0,102,255,.28); outline-offset: 3px; }
+    .hero .button:focus-visible { outline-color: rgba(255,255,255,.75); }
+    .button.hero-primary { color: var(--blue); background: var(--white); border-color: var(--white); }
+    .button.hero-secondary { color: var(--white); background: transparent; border-color: rgba(255,255,255,.68); }
+    .button.hero-secondary:hover { background: rgba(255,255,255,.1); }
+    .button.primary { color: var(--white); background: var(--blue); border-color: var(--blue); }
+    .button.primary:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+    .button.secondary { color: var(--blue); background: var(--white); border-color: #b9d2ff; }
+    .button.secondary:hover { background: var(--soft); }
+    .arrow { font-size: 19px; line-height: 1; }
+
+    .hero-index {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid rgba(255,255,255,.5);
+      border-left: 1px solid rgba(255,255,255,.5);
     }
-    .download h2 { font-size:32px; }
-    .download p { margin:10px 0 0; color:var(--muted); line-height:1.6; }
-    .download .button { flex:0 0 auto; color:var(--white); background:var(--blue); border-color:var(--blue); }
-    .download .button:hover { background:#0057db; }
-    footer { padding:28px 0; color:var(--muted); border-top:1px solid var(--line); font-size:14px; }
-    @media (max-width:760px) {
-      .wrap { width:min(100% - 28px,1080px); }
-      .hero { min-height:600px; }
-      .hero-content { padding:120px 0 80px; }
-      .grid { grid-template-columns:1fr; }
-      .download { align-items:flex-start; flex-direction:column; padding:30px; }
-      .download .button { width:100%; }
+    .index-item {
+      min-height: 166px;
+      padding: 26px;
+      border-right: 1px solid rgba(255,255,255,.5);
+      border-bottom: 1px solid rgba(255,255,255,.5);
+    }
+    .index-number { display: block; font-size: 15px; font-weight: 500; opacity: .76; }
+    .index-name { display: block; margin-top: 32px; font-size: 20px; line-height: 1.35; font-weight: 700; }
+
+    main { padding: 96px 0 110px; }
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+      padding-bottom: 34px;
+      border-bottom: 1px solid var(--line);
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+    .section-bar { width: 7px; height: 42px; background: var(--blue); }
+    h2 { margin: 0; font-size: clamp(36px, 4vw, 50px); line-height: 1.16; letter-spacing: -.035em; }
+    .section-note { margin: 0; color: var(--muted); font-size: 16px; }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-left: 1px solid var(--line);
+      margin-top: 34px;
+    }
+    .tool-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 440px;
+      padding: 38px;
+      overflow: hidden;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+    .tool-card:nth-child(-n+2) { border-top: 1px solid var(--line); }
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .tool-number {
+      color: var(--blue);
+      font-size: 15px;
+      line-height: 1;
+      font-weight: 700;
+    }
+    .tool-type { color: var(--muted); font-size: 14px; line-height: 1; }
+    .tool-card h3 {
+      margin: 48px 0 0;
+      font-size: clamp(30px, 3vw, 42px);
+      line-height: 1.14;
+      letter-spacing: -.035em;
+      font-weight: 700;
+    }
+    .tool-card p {
+      max-width: 520px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+    .tool-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      margin-top: 22px;
+      color: #4d5562;
+      font-size: 14px;
+    }
+    .tool-meta span::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin-right: 9px;
+      vertical-align: 2px;
+      background: var(--blue);
+    }
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 34px;
+    }
+    .huobao-card { padding-right: 220px; }
+    .huobao {
+      position: absolute;
+      width: 210px;
+      right: -18px;
+      bottom: -24px;
+      pointer-events: none;
+    }
+    .workbench-card {
+      color: var(--white);
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+    .workbench-card .tool-number,
+    .workbench-card .tool-type,
+    .workbench-card p,
+    .workbench-card .tool-meta { color: var(--white); }
+    .workbench-card p,
+    .workbench-card .tool-type,
+    .workbench-card .tool-meta { opacity: .86; }
+    .workbench-card .tool-meta span::before { background: var(--white); }
+    .workbench-card .button.primary { color: var(--blue); background: var(--white); border-color: var(--white); }
+    .workbench-card .button.secondary { color: var(--white); background: transparent; border-color: rgba(255,255,255,.62); }
+    .workbench-card .button.secondary:hover { background: rgba(255,255,255,.1); }
+
+    .quick-start {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+      margin-top: 92px;
+      padding-top: 64px;
+      border-top: 1px solid var(--line);
+    }
+    .quick-start h2 { font-size: 34px; }
+    .steps { margin: 0; padding: 0; list-style: none; }
+    .steps li {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 18px;
+      padding: 0 0 25px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    .steps strong { color: var(--ink); font-weight: 700; }
+    .step-number { color: var(--blue); font-weight: 700; }
+
+    footer {
+      padding: 30px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; }
+    .footer-inner a { text-underline-offset: 3px; }
+    .toast {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 20;
+      max-width: calc(100% - 48px);
+      padding: 14px 18px;
+      color: var(--white);
+      background: var(--ink);
+      border-radius: 8px;
+      font-size: 14px;
+      opacity: 0;
+      transform: translateY(14px);
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 55px; }
+      .hero-index { max-width: 600px; }
+      .tool-grid { grid-template-columns: 1fr; }
+      .tool-card:nth-child(2) { border-top: 0; }
+      .quick-start { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 28px, 1200px); }
+      .nav { min-height: 90px; }
+      .brandmark { width: 54px; height: 54px; }
+      .hero-grid { min-height: auto; padding: 68px 0 76px; }
+      .hero h1 { font-size: 49px; }
+      .hero-lead { font-size: 20px; }
+      .hero-index { grid-template-columns: 1fr; }
+      .index-item { min-height: 114px; }
+      .index-name { margin-top: 20px; }
+      main { padding: 72px 0 84px; }
+      .section-heading { align-items: flex-start; flex-direction: column; }
+      .tool-card { min-height: 410px; padding: 28px; }
+      .tool-card h3 { margin-top: 38px; font-size: 34px; }
+      .huobao-card { padding-right: 28px; padding-bottom: 180px; }
+      .huobao { width: 165px; right: -10px; bottom: -18px; }
+      .button { width: 100%; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
     }
   </style>
 </head>
 <body>
   <header class="hero">
-    <div class="nav"><div class="wrap brand">HTX</div></div>
-    <div class="wrap hero-content">
-      <h1>HTX Brand Skill</h1>
-      <p>用于生成符合 HTX 品牌规范的长图、海报和运营视觉物料，让版式、色彩、字号与 Logo 使用保持一致。</p>
-      <div class="actions">
-        <a class="button primary" href="./htx-brand-updated.skill" download>下载 Skill</a>
-        <a class="button" href="https://github.com/nikoyam303-alt/HTX-skill">查看 GitHub 仓库</a>
+    <div class="wrap">
+      <nav class="nav" aria-label="主导航">
+        <div class="wordmark">HTX Creative Toolkit</div>
+        <img class="brandmark" src="./assets/htx-logo-mark-100.svg" width="64" height="64" alt="HTX">
+      </nav>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1>HTX 创意<br>工具中心</h1>
+          <p class="hero-lead">火宝、品牌视觉、竞品调研与运营工作台，统一放在一个入口里。</p>
+          <div class="hero-actions">
+            <a class="button hero-primary" href="#tools">查看全部工具 <span class="arrow" aria-hidden="true">↓</span></a>
+            <a class="button hero-secondary" href="https://github.com/nikoyam303-alt/HTX-skill" target="_blank" rel="noopener noreferrer">GitHub 仓库 <span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <div class="hero-index" aria-label="工具索引">
+          <div class="index-item"><span class="index-number">01</span><span class="index-name">火宝视觉 Skill</span></div>
+          <div class="index-item"><span class="index-number">02</span><span class="index-name">HTX 品牌视觉 Skill</span></div>
+          <div class="index-item"><span class="index-number">03</span><span class="index-name">竞品视觉调研 Agent</span></div>
+          <div class="index-item"><span class="index-number">04</span><span class="index-name">运营视觉工作台</span></div>
+        </div>
       </div>
     </div>
   </header>
 
-  <main>
+  <main id="tools">
     <div class="wrap">
-      <h2>统一、清晰、可复用</h2>
-      <p class="intro">这份 Skill 将 HTX 的品牌视觉语言转化为可执行规范，适用于活动内容、权益说明、数据对比、交易赛事与其他运营物料。</p>
+      <div class="section-heading">
+        <div class="section-title">
+          <span class="section-bar" aria-hidden="true"></span>
+          <h2>全部工具</h2>
+        </div>
+        <p class="section-note">Skill 下载后可添加到 Codex；在线工具将新窗口打开。</p>
+      </div>
 
-      <section class="grid" aria-label="Skill 特性">
-        <article class="feature">
-          <strong>品牌主题</strong>
-          <p>支持 brand-blue 与 vip-gold 两套主题，统一渐变方向、品牌色和内容层级。</p>
+      <section class="tool-grid" aria-label="HTX 创意工具">
+        <article class="tool-card huobao-card">
+          <div class="card-top">
+            <span class="tool-number">01</span>
+            <span class="tool-type">Codex Skill</span>
+          </div>
+          <h3>火宝视觉<br>Skill</h3>
+          <p>基于官方三视图锁定火宝身份，自动完成场景、动作、角色一致性与视觉质量检查。</p>
+          <div class="tool-meta">
+            <span>完整身份参考</span>
+            <span>2.4 MB</span>
+          </div>
+          <div class="card-actions">
+            <a class="button primary" href="./downloads/htx-huobao-visual.skill" download>下载 Skill <span class="arrow" aria-hidden="true">↓</span></a>
+          </div>
+          <img class="huobao" src="./assets/htx-huobao-front.png" alt="" aria-hidden="true">
         </article>
-        <article class="feature">
-          <strong>可读性规范</strong>
-          <p>以画布比例推导字号，同时设置正文最小字号，兼顾跨尺寸适配与实际阅读体验。</p>
+
+        <article class="tool-card">
+          <div class="card-top">
+            <span class="tool-number">02</span>
+            <span class="tool-type">Codex Skill</span>
+          </div>
+          <h3>HTX 品牌视觉<br>Skill</h3>
+          <p>将品牌主题、字体、Logo、字号、版式与交付质检整理成可执行的视觉规范。</p>
+          <div class="tool-meta">
+            <span>含字体与 Logo</span>
+            <span>16 MB</span>
+          </div>
+          <div class="card-actions">
+            <a class="button primary" href="./downloads/htx-brand.skill" download>下载 Skill <span class="arrow" aria-hidden="true">↓</span></a>
+          </div>
         </article>
-        <article class="feature">
-          <strong>HTML + CSS</strong>
-          <p>使用标准 HTML 盒模型排版长图内容，并附带自适应缩放逻辑，减少裁切和溢出。</p>
+
+        <article class="tool-card">
+          <div class="card-top">
+            <span class="tool-number">03</span>
+            <span class="tool-type">Agent Prompt</span>
+          </div>
+          <h3>竞品视觉调研<br>Agent</h3>
+          <p>从官网、产品页与官方社媒采集证据，输出可追溯的竞品视觉对比、趋势判断与行动建议。</p>
+          <div class="tool-meta">
+            <span>证据归档</span>
+            <span>Markdown</span>
+          </div>
+          <div class="card-actions">
+            <a class="button primary" href="./downloads/htx-visual-research-agent.md" download>下载 Agent 提示词 <span class="arrow" aria-hidden="true">↓</span></a>
+            <button class="button secondary" type="button" data-copy="./downloads/htx-visual-research-agent.md">复制提示词</button>
+          </div>
+        </article>
+
+        <article class="tool-card workbench-card">
+          <div class="card-top">
+            <span class="tool-number">04</span>
+            <span class="tool-type">Online Workspace</span>
+          </div>
+          <h3>HTX 运营视觉<br>工作台</h3>
+          <p>在线组织文案、火宝、Logo、配图与社媒模板，快速完成运营视觉编排和导出。</p>
+          <div class="tool-meta">
+            <span>在线使用</span>
+            <span>GitHub Pages</span>
+          </div>
+          <div class="card-actions">
+            <a class="button primary" href="https://nikoyam303-alt.github.io/htx-creativeos/" target="_blank" rel="noopener noreferrer">打开工作台 <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="https://github.com/nikoyam303-alt/htx-creativeos" target="_blank" rel="noopener noreferrer">查看源码</a>
+          </div>
         </article>
       </section>
 
-      <section class="download">
-        <div>
-          <h2>获取最新版</h2>
-          <p>下载后即可将 Skill 添加到支持的 Codex 环境中使用。</p>
-        </div>
-        <a class="button" href="./htx-brand-updated.skill" download>下载 htx-brand-updated.skill</a>
+      <section class="quick-start" aria-labelledby="quick-start-title">
+        <h2 id="quick-start-title">快速使用</h2>
+        <ol class="steps">
+          <li><span class="step-number">01</span><span><strong>安装 Skill：</strong>下载 `.skill` 文件后，将它添加到支持 Skill 的 Codex 环境。</span></li>
+          <li><span class="step-number">02</span><span><strong>启动调研：</strong>复制或下载 Agent 提示词，在新任务中补充竞品、范围与时间窗口。</span></li>
+          <li><span class="step-number">03</span><span><strong>进入工作台：</strong>在线编排运营文案和视觉素材，完成模板化输出。</span></li>
+        </ol>
       </section>
     </div>
   </main>
 
-  <footer><div class="wrap">HTX Brand Skill · GitHub Pages</div></footer>
+  <footer>
+    <div class="wrap footer-inner">
+      <span>HTX 创意工具聚合页</span>
+      <a href="https://github.com/nikoyam303-alt/HTX-skill" target="_blank" rel="noopener noreferrer">nikoyam303-alt / HTX-skill</a>
+    </div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script>
+    const toast = document.querySelector(".toast");
+    let toastTimer;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        try {
+          const response = await fetch(button.dataset.copy);
+          if (!response.ok) throw new Error("fetch failed");
+          const prompt = await response.text();
+          await navigator.clipboard.writeText(prompt);
+          showToast("调研 Agent 提示词已复制");
+        } catch (error) {
+          showToast("复制失败，请使用下载按钮");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
