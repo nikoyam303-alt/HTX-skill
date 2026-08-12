@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="HTX 创意工具聚合页：火宝视觉 Skill、HTX 品牌视觉 Skill、竞品视觉调研 Agent 与运营视觉工作台。">
+  <meta name="description" content="HTX 创意工具聚合页：火宝快速海报、火宝生产级视觉、品牌社媒海报、复杂品牌视觉与运营视觉工作台。">
   <meta name="theme-color" content="#0066ff">
   <title>HTX 创意工具中心</title>
   <style>
@@ -147,6 +147,7 @@
     }
     .index-number { display: block; font-size: 15px; font-weight: 500; opacity: .76; }
     .index-name { display: block; margin-top: 32px; font-size: 20px; line-height: 1.35; font-weight: 700; }
+    .hero-index .index-item:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
     main { padding: 96px 0 110px; }
     .section-heading {
@@ -244,6 +245,8 @@
       pointer-events: none;
     }
     .workbench-card {
+      grid-column: 1 / -1;
+      min-height: 380px;
       color: var(--white);
       background: var(--blue);
       border-color: var(--blue);
@@ -290,29 +293,12 @@
     }
     .footer-inner { display: flex; justify-content: space-between; gap: 24px; }
     .footer-inner a { text-underline-offset: 3px; }
-    .toast {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      z-index: 20;
-      max-width: calc(100% - 48px);
-      padding: 14px 18px;
-      color: var(--white);
-      background: var(--ink);
-      border-radius: 8px;
-      font-size: 14px;
-      opacity: 0;
-      transform: translateY(14px);
-      pointer-events: none;
-      transition: opacity .2s ease, transform .2s ease;
-    }
-    .toast.show { opacity: 1; transform: translateY(0); }
-
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; gap: 55px; }
       .hero-index { max-width: 600px; }
       .tool-grid { grid-template-columns: 1fr; }
       .tool-card:nth-child(2) { border-top: 0; }
+      .workbench-card { grid-column: auto; }
       .quick-start { grid-template-columns: 1fr; gap: 36px; }
     }
     @media (max-width: 620px) {
@@ -323,6 +309,7 @@
       .hero h1 { font-size: 49px; }
       .hero-lead { font-size: 20px; }
       .hero-index { grid-template-columns: 1fr; }
+      .hero-index .index-item:last-child:nth-child(odd) { grid-column: auto; }
       .index-item { min-height: 114px; }
       .index-name { margin-top: 20px; }
       main { padding: 72px 0 84px; }
@@ -351,7 +338,7 @@
       <div class="hero-grid">
         <div class="hero-copy">
           <h1>HTX 创意<br>工具中心</h1>
-          <p class="hero-lead">火宝、品牌视觉、竞品调研与运营工作台，统一放在一个入口里。</p>
+          <p class="hero-lead">最新火宝 Agent、品牌视觉 Skill 与运营工作台，统一放在一个入口里。</p>
           <div class="hero-actions">
             <a class="button hero-primary" href="#tools">查看全部工具 <span class="arrow" aria-hidden="true">↓</span></a>
             <a class="button hero-secondary" href="https://github.com/nikoyam303-alt/HTX-skill" target="_blank" rel="noopener noreferrer">GitHub 仓库 <span class="arrow" aria-hidden="true">↗</span></a>
@@ -359,10 +346,11 @@
         </div>
 
         <div class="hero-index" aria-label="工具索引">
-          <div class="index-item"><span class="index-number">01</span><span class="index-name">火宝视觉 Skill</span></div>
-          <div class="index-item"><span class="index-number">02</span><span class="index-name">HTX 品牌视觉 Skill</span></div>
-          <div class="index-item"><span class="index-number">03</span><span class="index-name">竞品视觉调研 Agent</span></div>
-          <div class="index-item"><span class="index-number">04</span><span class="index-name">运营视觉工作台</span></div>
+          <div class="index-item"><span class="index-number">01</span><span class="index-name">火宝快速海报 Agent</span></div>
+          <div class="index-item"><span class="index-number">02</span><span class="index-name">火宝生产级视觉 Agent</span></div>
+          <div class="index-item"><span class="index-number">03</span><span class="index-name">HTX 社媒海报 Skill</span></div>
+          <div class="index-item"><span class="index-number">04</span><span class="index-name">HTX 品牌视觉 Skill</span></div>
+          <div class="index-item"><span class="index-number">05</span><span class="index-name">运营视觉工作台</span></div>
         </div>
       </div>
     </div>
@@ -384,14 +372,14 @@
             <span class="tool-number">01</span>
             <span class="tool-type">Codex Skill</span>
           </div>
-          <h3>火宝视觉<br>Skill</h3>
-          <p>基于官方三视图锁定火宝身份，自动完成场景、动作、角色一致性与视觉质量检查。</p>
+          <h3>火宝快速海报<br>Agent</h3>
+          <p>面向普通火宝社媒海报，自动完成场景生成、上半身裁切、文案排版与硬性问题修复。</p>
           <div class="tool-meta">
-            <span>完整身份参考</span>
-            <span>2.4 MB</span>
+            <span>快速自动出图</span>
+            <span>116 KB</span>
           </div>
           <div class="card-actions">
-            <a class="button primary" href="./downloads/htx-huobao-visual.skill" download>下载 Skill <span class="arrow" aria-hidden="true">↓</span></a>
+            <a class="button primary" href="./downloads/htx-huobao-fast.skill" download>下载 Agent <span class="arrow" aria-hidden="true">↓</span></a>
           </div>
           <img class="huobao" src="./assets/htx-huobao-front.png" alt="" aria-hidden="true">
         </article>
@@ -401,37 +389,52 @@
             <span class="tool-number">02</span>
             <span class="tool-type">Codex Skill</span>
           </div>
-          <h3>HTX 品牌视觉<br>Skill</h3>
-          <p>将品牌主题、字体、Logo、字号、版式与交付质检整理成可执行的视觉规范。</p>
+          <h3>火宝生产级视觉<br>Agent</h3>
+          <p>用于透明素材、品牌母版、身份核对、模板匹配与严格生产级修订，内置火宝官方身份参考。</p>
           <div class="tool-meta">
-            <span>含字体与 Logo</span>
-            <span>16 MB</span>
+            <span>严格身份与质检</span>
+            <span>784 KB</span>
           </div>
           <div class="card-actions">
-            <a class="button primary" href="./downloads/htx-brand.skill" download>下载 Skill <span class="arrow" aria-hidden="true">↓</span></a>
+            <a class="button primary" href="./downloads/htx-huobao-visual.skill" download>下载 Agent <span class="arrow" aria-hidden="true">↓</span></a>
           </div>
         </article>
 
         <article class="tool-card">
           <div class="card-top">
             <span class="tool-number">03</span>
-            <span class="tool-type">Agent Prompt</span>
+            <span class="tool-type">Codex Skill</span>
           </div>
-          <h3>竞品视觉调研<br>Agent</h3>
-          <p>从官网、产品页与官方社媒采集证据，输出可追溯的竞品视觉对比、趋势判断与行动建议。</p>
+          <h3>HTX 社媒海报<br>Skill</h3>
+          <p>快速生成无火宝的品牌社媒海报，支持蓝色栅格和柔和蓝白渐变两套常用背景。</p>
           <div class="tool-meta">
-            <span>证据归档</span>
-            <span>Markdown</span>
+            <span>常规社媒海报</span>
+            <span>17 MB</span>
           </div>
           <div class="card-actions">
-            <a class="button primary" href="./downloads/htx-visual-research-agent.md" download>下载 Agent 提示词 <span class="arrow" aria-hidden="true">↓</span></a>
-            <button class="button secondary" type="button" data-copy="./downloads/htx-visual-research-agent.md">复制提示词</button>
+            <a class="button primary" href="./downloads/htx-social-poster.skill" download>下载 Skill <span class="arrow" aria-hidden="true">↓</span></a>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <div class="card-top">
+            <span class="tool-number">04</span>
+            <span class="tool-type">Codex Skill</span>
+          </div>
+          <h3>HTX 品牌视觉<br>Skill</h3>
+          <p>面向复杂运营图、长图、VIP 金色物料、模板复刻与严格品牌质检，内置完整品牌资产。</p>
+          <div class="tool-meta">
+            <span>复杂与严格物料</span>
+            <span>17 MB</span>
+          </div>
+          <div class="card-actions">
+            <a class="button primary" href="./downloads/htx-brand.skill" download>下载 Skill <span class="arrow" aria-hidden="true">↓</span></a>
           </div>
         </article>
 
         <article class="tool-card workbench-card">
           <div class="card-top">
-            <span class="tool-number">04</span>
+            <span class="tool-number">05</span>
             <span class="tool-type">Online Workspace</span>
           </div>
           <h3>HTX 运营视觉<br>工作台</h3>
@@ -450,8 +453,8 @@
       <section class="quick-start" aria-labelledby="quick-start-title">
         <h2 id="quick-start-title">快速使用</h2>
         <ol class="steps">
-          <li><span class="step-number">01</span><span><strong>安装 Skill：</strong>下载 `.skill` 文件后，将它添加到支持 Skill 的 Codex 环境。</span></li>
-          <li><span class="step-number">02</span><span><strong>启动调研：</strong>复制或下载 Agent 提示词，在新任务中补充竞品、范围与时间窗口。</span></li>
+          <li><span class="step-number">01</span><span><strong>选择能力：</strong>普通火宝海报用快速 Agent，严格火宝素材用生产级 Agent，其他海报按复杂度选择社媒或品牌 Skill。</span></li>
+          <li><span class="step-number">02</span><span><strong>安装使用：</strong>下载 `.skill` 文件后，将它添加到支持 Skill 的 Codex 环境。</span></li>
           <li><span class="step-number">03</span><span><strong>进入工作台：</strong>在线编排运营文案和视觉素材，完成模板化输出。</span></li>
         </ol>
       </section>
@@ -465,31 +468,5 @@
     </div>
   </footer>
 
-  <div class="toast" role="status" aria-live="polite"></div>
-  <script>
-    const toast = document.querySelector(".toast");
-    let toastTimer;
-
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add("show");
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
-    }
-
-    document.querySelectorAll("[data-copy]").forEach((button) => {
-      button.addEventListener("click", async () => {
-        try {
-          const response = await fetch(button.dataset.copy);
-          if (!response.ok) throw new Error("fetch failed");
-          const prompt = await response.text();
-          await navigator.clipboard.writeText(prompt);
-          showToast("调研 Agent 提示词已复制");
-        } catch (error) {
-          showToast("复制失败，请使用下载按钮");
-        }
-      });
-    });
-  </script>
 </body>
 </html>
