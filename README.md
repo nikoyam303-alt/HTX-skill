@@ -1,11 +1,22 @@
 # HTX Creative Toolkit
 
-HTX 创意工具聚合页，统一提供：
+HTX 创意工具聚合页，统一提供完整、自包含的 Agent Skills：
 
-- `htx-huobao-fast.skill`：火宝 Agent 完整安装包
-- `htx-social-poster.skill`：HTX 社媒海报 Skill 完整安装包
-- `htx-brand.skill`：HTX 品牌视觉 Skill 完整安装包
+- `downloads/*.skill`：Codex 安装包，包根包含 `SKILL.md`、`scripts/`、`assets/` 等完整资源
+- `downloads/*.zip`：Claude Code、Cursor 等环境使用的通用包，解压后保留顶层 Skill 文件夹
+- `skills/`：三套 Skill 的可审计源目录，内置渲染脚本、背景、Logo、字体与参考素材
 - HTX 运营视觉工作台入口
+
+Claude Code 项目级安装示例：
+
+```text
+.claude/skills/htx-social-poster/
+├── SKILL.md
+├── scripts/
+└── assets/
+```
+
+必须复制完整目录，不能只复制 `SKILL.md`。运行 `scripts/build-packages.sh` 可从 `skills/` 重建全部下载包并自动验证文件完整性、目录层级和本机绝对路径。
 
 线上页面：<https://nikoyam303-alt.github.io/HTX-skill/>
 

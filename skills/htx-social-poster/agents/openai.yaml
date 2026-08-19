@@ -1,0 +1,4 @@
+interface:
+  display_name: "HTX 品牌蓝社媒海报"
+  short_description: "使用蓝色栅格或柔和渐变快速生成 HTX 社媒海报"
+  default_prompt: "使用 $htx-social-poster 根据我的文案生成一张栅格或柔和渐变的 HTX 海报。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "HTX 火宝 Agent"
+  short_description: "快速生成火宝社媒海报并自动完成裁切、排版与问题修复"
+  default_prompt: "使用 $htx-huobao-fast 根据我的副标题、主标题和日期生成火宝社媒海报。"

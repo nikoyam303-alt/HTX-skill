@@ -1,0 +1,4 @@
+interface:
+  display_name: "HTX 品牌视觉"
+  short_description: "制作复杂运营图、长图、VIP 金色物料并执行品牌质检"
+  default_prompt: "使用 $htx-brand 根据我的文案和素材制作符合 HTX 规范的复杂品牌视觉。"
