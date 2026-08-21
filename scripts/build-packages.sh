@@ -6,7 +6,7 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 BUILD_DIR="$(mktemp -d)"
 trap 'rm -rf "$BUILD_DIR"' EXIT
 
-for skill_name in htx-huobao-fast htx-social-poster htx-brand; do
+for skill_name in htx-huobao-fast htx-brand; do
   source_dir="$REPO_ROOT/skills/$skill_name"
   if [[ ! -f "$source_dir/SKILL.md" ]]; then
     echo "Missing $source_dir/SKILL.md" >&2

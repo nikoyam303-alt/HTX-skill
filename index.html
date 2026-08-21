@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="HTX 创意工具聚合页：火宝 Agent、品牌社媒海报、复杂品牌视觉与运营视觉工作台。">
+  <meta name="description" content="HTX 创意工具聚合页：火宝 Agent、统一品牌视觉 Skill 与运营视觉工作台。">
   <meta name="theme-color" content="#0066ff">
   <title>HTX 创意工具中心</title>
   <style>
@@ -237,6 +237,7 @@
       padding-top: 34px;
     }
     .workbench-card {
+      grid-column: 1 / -1;
       color: var(--white);
       background: var(--blue);
       border-color: var(--blue);
@@ -326,7 +327,7 @@
       <div class="hero-grid">
         <div class="hero-copy">
           <h1>HTX 创意<br>工具中心</h1>
-          <p class="hero-lead">最新火宝 Agent、品牌视觉 Skill 与运营工作台，统一放在一个入口里。</p>
+          <p class="hero-lead">火宝 Agent、统一品牌视觉 Skill 与运营工作台，集中在一个入口里。</p>
           <div class="hero-actions">
             <a class="button hero-primary" href="#tools">查看全部工具 <span class="arrow" aria-hidden="true">↓</span></a>
             <a class="button hero-secondary" href="https://github.com/nikoyam303-alt/HTX-skill" target="_blank" rel="noopener noreferrer">GitHub 仓库 <span class="arrow" aria-hidden="true">↗</span></a>
@@ -335,9 +336,8 @@
 
         <div class="hero-index" aria-label="工具索引">
           <div class="index-item"><span class="index-number">01</span><span class="index-name">火宝 Agent</span></div>
-          <div class="index-item"><span class="index-number">02</span><span class="index-name">HTX 社媒海报 Skill</span></div>
-          <div class="index-item"><span class="index-number">03</span><span class="index-name">HTX 品牌视觉 Skill</span></div>
-          <div class="index-item"><span class="index-number">04</span><span class="index-name">运营视觉工作台</span></div>
+          <div class="index-item"><span class="index-number">02</span><span class="index-name">HTX 品牌视觉 Skill</span></div>
+          <div class="index-item"><span class="index-number">03</span><span class="index-name">运营视觉工作台</span></div>
         </div>
       </div>
     </div>
@@ -350,7 +350,7 @@
           <span class="section-bar" aria-hidden="true"></span>
           <h2>全部工具</h2>
         </div>
-        <p class="section-note">每个 Skill 均内置脚本、模板、Logo 与字体，同时提供 Codex 和通用 ZIP 版本。</p>
+        <p class="section-note">每个 Skill 均包含完整规则与品牌资产，同时提供 Codex 和通用 ZIP 版本。</p>
       </div>
 
       <section class="tool-grid" aria-label="HTX 创意工具">
@@ -376,28 +376,11 @@
             <span class="tool-number">02</span>
             <span class="tool-type">Codex · Claude · Cursor</span>
           </div>
-          <h3>HTX 社媒海报<br>Skill</h3>
-          <p>快速生成无火宝的品牌社媒海报，支持蓝色栅格和柔和蓝白渐变两套常用背景。</p>
-          <div class="tool-meta">
-            <span>常规社媒海报</span>
-            <span>内置背景、Logo 与字体</span>
-          </div>
-          <div class="card-actions">
-            <a class="button primary" href="./downloads/htx-social-poster.skill" download>Codex .skill <span class="arrow" aria-hidden="true">↓</span></a>
-            <a class="button secondary" href="./downloads/htx-social-poster.zip" download>通用 .zip <span class="arrow" aria-hidden="true">↓</span></a>
-          </div>
-        </article>
-
-        <article class="tool-card">
-          <div class="card-top">
-            <span class="tool-number">03</span>
-            <span class="tool-type">Codex · Claude · Cursor</span>
-          </div>
           <h3>HTX 品牌视觉<br>Skill</h3>
-          <p>面向复杂运营图、长图、VIP 金色物料、模板复刻与严格品牌质检，内置完整品牌资产。</p>
+          <p>统一制作普通社媒方图、竖图、复杂运营长图、VIP 物料、模板复刻与严格品牌质检。</p>
           <div class="tool-meta">
-            <span>复杂与严格物料</span>
-            <span>内置完整品牌资产</span>
+            <span>社媒与复杂物料统一入口</span>
+            <span>自适应标题与品牌组件</span>
           </div>
           <div class="card-actions">
             <a class="button primary" href="./downloads/htx-brand.skill" download>Codex .skill <span class="arrow" aria-hidden="true">↓</span></a>
@@ -407,7 +390,7 @@
 
         <article class="tool-card workbench-card">
           <div class="card-top">
-            <span class="tool-number">04</span>
+            <span class="tool-number">03</span>
             <span class="tool-type">Online Workspace</span>
           </div>
           <h3>HTX 运营视觉<br>工作台</h3>
@@ -426,8 +409,8 @@
       <section class="quick-start" aria-labelledby="quick-start-title">
         <h2 id="quick-start-title">快速使用</h2>
         <ol class="steps">
-          <li><span class="step-number">01</span><span><strong>选择能力：</strong>火宝海报使用火宝 Agent；其他海报按复杂度选择社媒或品牌 Skill。</span></li>
-          <li><span class="step-number">02</span><span><strong>Codex 安装：</strong>下载 `.skill` 文件并添加到 Codex。包内已经包含 `SKILL.md`、脚本和全部内置素材。</span></li>
+          <li><span class="step-number">01</span><span><strong>选择能力：</strong>火宝角色海报使用火宝 Agent；其他社媒海报和复杂物料统一使用品牌视觉 Skill。</span></li>
+          <li><span class="step-number">02</span><span><strong>Codex 安装：</strong>下载 `.skill` 文件并添加到 Codex。包内已经包含 `SKILL.md` 与所需品牌资产。</span></li>
           <li><span class="step-number">03</span><span><strong>Claude / Cursor：</strong>下载通用 `.zip`，完整解压后把整个 Skill 文件夹放入对应的 skills 目录，不要只复制 `SKILL.md`。</span></li>
           <li><span class="step-number">04</span><span><strong>进入工作台：</strong>在线编排运营文案和视觉素材，完成模板化输出。</span></li>
         </ol>

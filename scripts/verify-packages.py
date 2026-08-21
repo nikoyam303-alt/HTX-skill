@@ -6,7 +6,7 @@ from zipfile import ZipFile
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-SKILLS = ("htx-huobao-fast", "htx-social-poster", "htx-brand")
+SKILLS = ("htx-huobao-fast", "htx-brand")
 TEXT_SUFFIXES = {".md", ".mjs", ".js", ".py", ".yaml", ".yml", ".json", ".svg"}
 
 
@@ -64,7 +64,7 @@ def validate_archive(skill_name: str, suffix: str) -> None:
     required = {f"{prefix}SKILL.md"}
     if not required.issubset(names):
         raise SystemExit(f"{package.name}: missing SKILL.md")
-    if not any(name.startswith(f"{prefix}scripts/") for name in names):
+    if skill_name == "htx-huobao-fast" and not any(name.startswith(f"{prefix}scripts/") for name in names):
         raise SystemExit(f"{package.name}: missing scripts/")
     if not any(name.startswith(f"{prefix}assets/") for name in names):
         raise SystemExit(f"{package.name}: missing assets/")
