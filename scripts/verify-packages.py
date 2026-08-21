@@ -64,8 +64,6 @@ def validate_archive(skill_name: str, suffix: str) -> None:
     required = {f"{prefix}SKILL.md"}
     if not required.issubset(names):
         raise SystemExit(f"{package.name}: missing SKILL.md")
-    if skill_name == "htx-huobao-fast" and not any(name.startswith(f"{prefix}scripts/") for name in names):
-        raise SystemExit(f"{package.name}: missing scripts/")
     if not any(name.startswith(f"{prefix}assets/") for name in names):
         raise SystemExit(f"{package.name}: missing assets/")
 

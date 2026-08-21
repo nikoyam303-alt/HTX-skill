@@ -1,10 +1,10 @@
 # HTX Creative Toolkit
 
-HTX 创意工具聚合页，统一提供两套完整、自包含的 Agent Skills：
+HTX 创意工具聚合页，统一提供两套协同工作的 Agent Skills：
 
 - `downloads/*.skill`：Codex 安装包，包根包含 `SKILL.md` 与该 Skill 所需的完整资源
 - `downloads/*.zip`：Claude Code、Cursor 等环境使用的通用包，解压后保留顶层 Skill 文件夹
-- `skills/`：两套 Skill 的可审计源目录；火宝 Skill 内置自动出图脚本，品牌 Skill 统一覆盖普通社媒与复杂品牌物料
+- `skills/`：两套 Skill 的可审计源目录；火宝 Skill 负责角色插画与专属质检，并复用品牌 Skill 的动态版式逻辑
 - HTX 运营视觉工作台入口
 
 Claude Code 项目级安装示例：
